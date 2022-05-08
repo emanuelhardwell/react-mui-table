@@ -1,10 +1,11 @@
-import { TableCustomizeColums } from "./components/TableCustomizeColums";
-import { TableDataStatic } from "./components/TableDataStatic";
+import { TableAxios } from "./components/TableAxios";
+// import { TableCustomizeColums } from "./components/TableCustomizeColums";
+// import { TableDataStatic } from "./components/TableDataStatic";
 
 function App() {
   return (
     <>
-      <TableCustomizeColums />
+      <TableAxios />
     </>
   );
 }
