@@ -18,6 +18,16 @@ export const TableAxios = () => {
     setProducts(data);
   };
 
+  const deleteProducts = (rowsDeleted) => {
+    const idsToDelete = rowsDeleted.data.map((d) => products[d.dataIndex].id); // array of all ids to to be deleted
+    console.log(idsToDelete);
+  };
+
+  const updateProdut = (id) => {
+    const productNow = products.filter((product) => product.id === id);
+    console.log(productNow);
+  };
+
   const colums = [
     {
       name: "id",
@@ -77,9 +87,7 @@ export const TableAxios = () => {
           return (
             <button
               onClick={() => {
-                console.log(value);
-                console.log(tableMeta.rowData[0]);
-                window.alert(`Clicked "Edit" for row ${tableMeta.rowIndex}`);
+                updateProdut(tableMeta.rowData[0]);
               }}
             >
               Edit
@@ -92,16 +100,8 @@ export const TableAxios = () => {
 
   const options = {
     filterType: "checkbox",
-    onRowsDelete: (rowsDeleted, data, dataIndex, e) => {
-      console.log(rowsDeleted);
-      console.log(data);
-      console.log(dataIndex);
-
-      const idsToDelete = rowsDeleted.data.map((d) => products[d.dataIndex].id); // array of all ids to to be deleted
-      console.log(idsToDelete);
-      //   const idsToDelete = rowsDeleted.data.map((d) => data[d.dataIndex].id); // array of all ids to to be deleted
-      //   console.log(idsToDelete);
-      //   http.delete(idsToDelete, res).then(window.alert("Deleted!")); // your delete request here
+    onRowsDelete: (rowsDeleted, data, dataIndex) => {
+      deleteProducts(rowsDeleted);
     },
   };
 
